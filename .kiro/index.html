@@ -1,75 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Embedded Hardware Referee</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Comparison Tool</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Embedded Hardware Referee</h1>
+    <div class="container">
+        <header>
+            <h1>Tech Comparison Tool</h1>
+            <p>Compare technologies from a beginner perspective</p>
+        </header>
 
-  <p>
-    This tool helps you compare Arduino Uno and Raspberry Pi Zero 2 W
-    based on your project needs. It explains trade-offs instead of
-    giving a single “best” answer.
-  </p>
+        <div class="category-selector">
+            <label for="category">Choose a comparison category:</label>
+            <select id="category">
+                <option value="">Select a category...</option>
+                <option value="backend">Backend Frameworks</option>
+                <option value="hardware">Hardware Platforms</option>
+            </select>
+        </div>
 
-  <h2>Select your project type</h2>
-  <select id="projectType">
-    <option value="">-- Choose --</option>
-    <option value="simple">Simple sensor / control project</option>
-    <option value="linux">Linux-based or networked project</option>
-  </select>
+        <div id="comparison-container" class="comparison-container hidden">
+            <div class="technologies">
+                <div id="tech-cards" class="tech-cards"></div>
+            </div>
+            
+            <div class="comparison-matrix">
+                <h3>Comparison Matrix</h3>
+                <div id="matrix-content"></div>
+            </div>
+        </div>
+    </div>
 
-  <button onclick="compare()">Compare</button>
-
-  <div id="result"></div>
-
-  <script>
-    function compare() {
-      const type = document.getElementById("projectType").value;
-      const result = document.getElementById("result");
-
-      if (!type) {
-        result.innerHTML = "<p>Please select a project type.</p>";
-        return;
-      }
-
-      if (type === "simple") {
-        result.innerHTML = `
-          <h3>For simple control or sensor projects:</h3>
-          <p>
-            <strong>Arduino Uno</strong> is more suitable when you need
-            low power consumption, real-time control, and minimal setup.
-          </p>
-          <p>
-            <strong>Raspberry Pi Zero 2 W</strong> may be unnecessary
-            if you do not need Linux or networking.
-          </p>
-        `;
-      }
-
-      if (type === "linux") {
-        result.innerHTML = `
-          <h3>For Linux-based or networked projects:</h3>
-          <p>
-            <strong>Raspberry Pi Zero 2 W</strong> is more suitable when
-            you need Wi-Fi, multitasking, and a full operating system.
-          </p>
-          <p>
-            <strong>Arduino Uno</strong> may be limiting for complex
-            software or networking needs.
-          </p>
-        `;
-      }
-    }
-  </script>
-
-  <hr>
-
-  <h2>Key Trade-offs</h2>
-  <ul>
-    <li><strong>Simplicity vs Capability:</strong> Arduino is simpler, Pi is more capable</li>
-    <li><strong>Power vs Performance:</strong> Arduino uses less power, Pi offers higher performance</li>
-    <li><strong>Real-time vs Multitasking:</strong> Arduino excels at timing, Pi excels at multitasking</li>
-  </ul>
+    <script src="script.js"></script>
 </body>
 </html>
